@@ -696,7 +696,7 @@ smoking_violin <- ggplot(data = Dummified_df, aes(x = smoking_cat, y = Gap, fill
 
 
 
-anxiety_pred <- ggemmeans(multinom_4, terms = "num_anxiety")
+anxiety_pred <- ggemmeans(multinom_3, terms = "num_anxiety")
  anxiety_pred_plot <- ggplot(data = anxiety_pred, aes(x = x , y = predicted, color = response.level))+
    geom_line()+
    scale_color_brewer(palette = "Set1")+
