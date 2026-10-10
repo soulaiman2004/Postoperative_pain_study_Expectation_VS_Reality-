@@ -3,6 +3,7 @@
 library(tidyverse)
 library(readxl)
 library(janitor)
+library(mice)
 post_operative_df <- read_excel("C:/Users/alialsoulaiman/Documents/Postoperative pain/Postoperative pain script repo folder/Publishing scripts/PRE+POST 8 Editon - ANALYZE (2).xlsx")|>
   clean_names()|> #You should reconfigure the data frame PATH so that it fits your own machine PATH to data spreadsheet
   mutate(patients_mood = factor(
@@ -14,7 +15,7 @@ post_operative_df <- read_excel("C:/Users/alialsoulaiman/Documents/Postoperative
   ), anxiety = factor(
     anxiety , ordered = TRUE,
     levels = c("Not at all", "Kinda", "Anxious" ,"Panic")
-  ), metropolitan_or_rural = factor(metropolitan_or_rural),
+  ), metropolitan_or_rural = factor(case_when(metropolitan_or_rural == "Metropolitan"~ "Metropolitan", metropolitan_or_rural %in% c("Regional", "Rural") ~ "Non-Metropolitan")),
   social_status = factor(social_status),
   gender = factor(gender),
   education_level = factor(case_when( education_level == "Illiterate" ~ "Illiterate",
@@ -70,7 +71,8 @@ post_operative_df <- read_excel("C:/Users/alialsoulaiman/Documents/Postoperative
      Gap = average_expected_pain - average_post_operative_pain )|>
   mutate (Estimation_status = factor(case_when(Gap > 1 ~ "Overestimator", Gap < -1 ~ "Underestimator", .default = "Accurate Estimator")),
 Using_prescription_drugs = factor(case_when(drugs == "None"~ "No" , .default = "Yes")), 
-Presence_of_chronic_disease = factor(case_when((htn_cd == 1 | dm_cd ==1| asthma_cd ==1 | hypothyroidisim_cd==1| ibs_cd==1 | cardiiac_diseases_cd ==1 | cancer_cd ==1 | others_cd ==1) ~ "Yes", .default = "No")))
+Presence_of_chronic_disease = factor(case_when((htn_cd == 1 | dm_cd ==1| asthma_cd ==1 | hypothyroidisim_cd==1| ibs_cd==1 | cardiiac_diseases_cd ==1 | cancer_cd ==1 | others_cd ==1) ~ "Yes", .default = "No")),
+current_job = factor(current_job, ordered = TRUE, levels = c("Unemployed", "Low intensity physical job", "Medium intensity physical job", "High intensity physical job")))
 
 Dummified_df <- post_operative_df |>
   mutate(num_anxiety = as.numeric(anxiety),
@@ -80,8 +82,18 @@ Dummified_df <- post_operative_df |>
          num_education = as.numeric(education_level),
          anaesthesia = factor(anaesthesia),
          analgesics_plan = factor(analgesics_plan),
-         num_smoking_cat = as.numeric(smoking_cat)
-          )
+         num_smoking_cat = as.numeric(smoking_cat),
+         metropolitan_or_rural = as.factor(metropolitan_or_rural)
+         , current_job =as.numeric(current_job), BMI_cat =as.numeric(BMI_cat) )|>
+  select(gender,age_cat,education_level,  metropolitan_or_rural,bmi_kg_m_2, any_allergies, analgesic_use, num_anxiety, num_sleep, num_mood, num_surgery_cat,
+  anaesthesia, analgesics_plan, num_smoking_cat,surgical_procedure_duration,Gap, Estimation_status,
+Presence_of_chronic_disease, Using_prescription_drugs)
 
 pilot_df <- post_operative_df |>
   filter(id >=1000)
+
+
+#setting seed 
+set.seed(5830)
+imputed_Dummified_df <- mice(Dummified_df, m = 250, method = "pmm", maxit = 5)
+
