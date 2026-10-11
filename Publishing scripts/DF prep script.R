@@ -14,7 +14,7 @@ post_operative_df <- read_excel("C:/Users/alialsoulaiman/Documents/Postoperative
     levels= c("Very bad", "Bad", "Medium", "Good", "Excellent")
   ), anxiety = factor(
     anxiety , ordered = TRUE,
-    levels = c("Not at all", "Kinda", "Anxious" ,"Panic")
+    levels = c("Not at all", "Kinda", "Anxious")
   ), metropolitan_or_rural = factor(case_when(metropolitan_or_rural == "Metropolitan"~ "Metropolitan", metropolitan_or_rural %in% c("Regional", "Rural") ~ "Non-Metropolitan")),
   social_status = factor(social_status),
   gender = factor(gender),
@@ -26,6 +26,8 @@ post_operative_df <- read_excel("C:/Users/alialsoulaiman/Documents/Postoperative
                            levels = c("Illiterate",
                                       "Primary school",
                                       "Middle or High school", "Higher Education")),
+  anaesthesia = as.factor(anaesthesia),
+  analgesics_plan = as.factor(analgesics_plan),
   smoking_cat= factor(case_when(total_smoking == 0 ~ "Non smoker",total_smoking >0 & total_smoking <= 20 ~ "Light smoker",total_smoking >20 ~ "Heavy smoker"), ordered = TRUE, 
                                       levels = c("Non smoker",
                                                  "Light smoker",
@@ -85,8 +87,8 @@ Dummified_df <- post_operative_df |>
          num_smoking_cat = as.numeric(smoking_cat),
          metropolitan_or_rural = as.factor(metropolitan_or_rural)
          , current_job =as.numeric(current_job), BMI_cat =as.numeric(BMI_cat) )|>
-  select(gender,age_cat,education_level,  metropolitan_or_rural,bmi_kg_m_2, any_allergies, analgesic_use, num_anxiety, num_sleep, num_mood, num_surgery_cat,
-  anaesthesia, analgesics_plan, num_smoking_cat,surgical_procedure_duration,Gap, Estimation_status,
+  select(gender,age,education_level,  metropolitan_or_rural,bmi_kg_m_2, any_allergies, analgesic_use, anxiety, patients_sleep_quality, patients_mood, Surgery_cat,
+  anaesthesia, analgesics_plan, smoking_cat,surgical_procedure_duration,Gap, Estimation_status,
 Presence_of_chronic_disease, Using_prescription_drugs)
 
 pilot_df <- post_operative_df |>
@@ -94,6 +96,5 @@ pilot_df <- post_operative_df |>
 
 
 #setting seed 
-set.seed(5830)
-imputed_Dummified_df <- mice(Dummified_df, m = 250, method = "pmm", maxit = 5)
+imputed_Dummified_df <- mice(Dummified_df, m = 100,  seed = 8550, maxit = 5)
 
