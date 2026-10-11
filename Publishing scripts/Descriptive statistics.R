@@ -89,3 +89,9 @@ length_of_stay, smoking_cat , Estimation_status)|>
     add_p()|>
   bold_labels()
   
+table_counts_Estimation_status <- as.data.frame(table(post_operative_df$Estimation_status))
+names(table_counts_Estimation_status) <- c("Estimation_status", "Freq")
+flextable(table_counts_Estimation_status, theme_fun = "theme_vanilla", col_keys = c("Estimation_status", "Freq"))|>
+  set_caption("Table 4: Counts of Estimation Status")|>
+  autofit()|>
+  save_as_docx(path = "Table_4_Counts_of_Estimation_Status.docx")
