@@ -35,3 +35,4 @@ all_subgroup_wilcoxon <- set_names(group_vars) |>
         }
       })
   }, .options = furrr_options(seed = TRUE)) # Ensures reproducible random components if any
+plan(sequential)
