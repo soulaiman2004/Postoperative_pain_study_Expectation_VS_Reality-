@@ -187,7 +187,7 @@ Subgroup_wilcoxon_test_asthma_cd <- post_operative_df|>
 # 16. Subgroup analysis for wilcoxon test based on Hypothyroidism Presence
 #==================================================================
 Subgroup_wilcoxon_test_hypothyroidism <- post_operative_df|>
-  split(~ hypothyroidism_cd , drop = TRUE) |>
+  split(~  hypothyroidisim_cd , drop = TRUE) |>
   map(function(df) {
     if(nrow(df) < 10) { return(paste("Not enough data for Wilcoxon test in this subgroup")) }
     else {
