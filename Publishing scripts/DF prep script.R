@@ -4,6 +4,7 @@ library(tidyverse)
 library(readxl)
 library(janitor)
 library(mice)
+library(future)
 post_operative_df <- read_excel("C:/Users/alialsoulaiman/Documents/Postoperative pain/Postoperative pain script repo folder/Publishing scripts/PRE+POST 8 Editon - ANALYZE (2).xlsx")|>
   clean_names()|> #You should reconfigure the data frame PATH so that it fits your own machine PATH to data spreadsheet
   mutate(patients_mood = factor(
@@ -94,7 +95,38 @@ Presence_of_chronic_disease, Using_prescription_drugs)
 pilot_df <- post_operative_df |>
   filter(id >=1000)
 
+post_operative_df_ordinal <- post_operative_df |>
+  mutate(
+    ord_post_operative_average = factor(
+      case_when(
+        average_post_operative_pain < 5 ~ "Mild",
+        average_post_operative_pain >= 5 & average_post_operative_pain < 7 ~ "Moderate",
+        average_post_operative_pain >= 7 ~ "Severe"
+      ), 
+      ordered = TRUE, 
+      levels = c("Mild", "Moderate", "Severe")
+    ),
+    ord_max_pain = factor(
+      case_when(
+        max_post_operative_pain < 5 ~ "Mild",
+        max_post_operative_pain >= 5 & max_post_operative_pain < 7 ~ "Moderate",
+        max_post_operative_pain >= 7 ~ "Severe"
+      ),
+      ordered = TRUE, 
+      levels = c("Mild", "Moderate", "Severe")
+    ), 
+    ord_min_pain = factor(
+      case_when(
+        min_post_operative_pain < 5 ~ "Mild",
+        min_post_operative_pain >= 5 & min_post_operative_pain < 7 ~ "Moderate",
+        min_post_operative_pain >= 7 ~ "Severe"
+      ), 
+      ordered = TRUE, 
+      levels = c("Mild", "Moderate", "Severe")
+    )
+  )
 
+plan(multisession)
 #setting seed 
 imputed_Dummified_df <- mice(Dummified_df, m = 100,  seed = 8550, maxit = 5)
-
+plan(sequential)
