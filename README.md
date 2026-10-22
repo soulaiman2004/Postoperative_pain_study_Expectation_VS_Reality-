@@ -6,5 +6,6 @@ The protocol of this study was discussed between investigators, and the reposito
 and analysis scripts used to provide a draft version to the university library in the folder Thesis script.
 
 ### Note for those who see this repository:
-If you have any good ideas to add to the repo , please branch it, the code was fully written n R as it's my first programming language.
-Please be clear about your commits and provide suffecient reasons for them.
+If you have any good ideas to add to the repo , please branch it. 
+The code was fully written in R as it's my first programming language.
+Please be clear about your commits and provide methodologic reasons for them.
