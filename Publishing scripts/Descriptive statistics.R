@@ -2,6 +2,7 @@
 # without any inferential statistics or hypothesis testing.
 
 library(gtsummary)
+library(flextable)
 
 Table_1_demographics <- post_operative_df|>
   select(age, gender ,social_status, education_level, current_job, metropolitan_or_rural )|>
@@ -86,12 +87,12 @@ length_of_stay, smoking_cat , Estimation_status)|>
     ),     statistic = list(all_continuous() ~ "{mean} ({sd}) ({p25} - {median} - {p75})", all_categorical() ~ "{n} ({p}%)"),
      digits = all_continuous() ~ 1,
      percent = "column") |>
-    add_p()|>
-  bold_labels()
-  
-table_counts_Estimation_status <- as.data.frame(table(post_operative_df$Estimation_status))
-names(table_counts_Estimation_status) <- c("Estimation_status", "Freq")
-flextable(table_counts_Estimation_status, theme_fun = "theme_vanilla", col_keys = c("Estimation_status", "Freq"))|>
+  bold_labels()|>
+  add_p()
+
+table_counts_Estimation_status <- as.data.frame(table(post_operative_df$Estimation_status))|>
+  names(table_counts_Estimation_status) <- c("Estimation_status", "Freq")|>
+  flextable(table_counts_Estimation_status, theme_fun = "theme_vanilla", col_keys = c("Estimation_status", "Freq"))|>
   set_caption("Table 4: Counts of Estimation Status")|>
   autofit()|>
   save_as_docx(path = "Table_4_Counts_of_Estimation_Status.docx")
