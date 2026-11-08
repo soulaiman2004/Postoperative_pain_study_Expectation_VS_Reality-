@@ -20,7 +20,7 @@ for(i in 1:100){
   surviving <- rownames(coefs)[which(coefs[, 1] != 0)]
   selected_vars_list[[i]] <- setdiff(surviving, "(Intercept)")}
 
-# Check selection frequency across all 40 datasets
+# Check selection frequency across all 100 datasets
 table(unlist(selected_vars_list)) / 100
 
 #now I'll build a model with those with coeffecients here
@@ -47,11 +47,13 @@ Multinom_post_lasso <- with(imputed_Dummified_df, multinom(Estimation_status ~  
   anxiety + education_level +patients_sleep_quality + Surgery_cat, maxit = 500))
 
 # Let's pool it now
+# Let's pool it now
 pooled_Multinom <- pool(Multinom_post_lasso)
 publication_df_of_model <- as.data.frame(summary(pooled_Multinom, exponentiate = TRUE, conf.int = TRUE))
 
-table_of_model <- publication_df_of_model|>
-  mutate(# Combine estimate and 95% CI using sprintf
+table_of_model <- publication_df_of_model |>
+  mutate(
+    # Combine estimate and 95% CI using sprintf
     aor_ci = sprintf("%.2f (%.2f – %.2f)", estimate, conf.low, conf.high),
     
     # Clean up p-values (e.g., < 0.001 formatting)
@@ -60,16 +62,19 @@ table_of_model <- publication_df_of_model|>
       TRUE ~ sprintf("%.3f", p.value)
     ),
     
-    # Optional: Clean up term names if you want friendlier labels
-    term_clean = case_when(
-      term == "analgesic_use" ~ "Analgesic Use (Yes vs. No)",
-      term == "analgesics_planTypical+ tramadol" ~ "Analgesics Plan (Typical + Tramadol)",
-      grepl("anxiety", term) ~ paste0("Anxiety (", sub(".*\\.", "", term), ")"),
-      grepl("education_level", term) ~ paste0("Education Level (", sub(".*\\.", "", term), ")"),
-      grepl("patients_sleep_quality", term) ~ paste0("Sleep Quality (", sub(".*\\.", "", term), ")"),
-      grepl("Surgery_cat", term) ~ paste0("Surgery Category (", sub(".*\\.", "", term), ")"),
-      term == "(Intercept)" ~ "Intercept",
-      TRUE ~ term
+    # Clean up term names AND explicitly append the multinomial contrast using y.level
+    term_clean = paste0(
+      case_when(
+        term == "analgesic_use" ~ "Analgesic Use (Yes vs. No)",
+        term == "analgesics_planTypical+ tramadol" ~ "Analgesics Plan (Typical + Tramadol)",
+        grepl("anxiety", term) ~ paste0("Anxiety (", sub(".*\\.", "", term), ")"),
+        grepl("education_level", term) ~ paste0("Education Level (", sub(".*\\.", "", term), ")"),
+        grepl("patients_sleep_quality", term) ~ paste0("Sleep Quality (", sub(".*\\.", "", term), ")"),
+        grepl("Surgery_cat", term) ~ paste0("Surgery Category (", sub(".*\\.", "", term), ")"),
+        term == "(Intercept)" ~ "Intercept",
+        TRUE ~ term
+      ),
+      " [vs. Accurate: ",pooled_Multinom$pooled$y.level, "]"
     )
   ) %>%
   select(term_clean, aor_ci, p_formatted) %>%
@@ -78,28 +83,30 @@ table_of_model <- publication_df_of_model|>
     "Adjusted Odds Ratio (95% CI)" = aor_ci,
     "p-value" = p_formatted
   )
+
 pub_flextable <- flextable(table_of_model) %>%
   set_caption("Table: Predictors of Post-Operative Pain Expectations (Multinomial Logistic Regression)") %>%
   theme_booktabs() %>%
   autofit()
-
 library(forestplot)
 library(dplyr)
 
-# 1. Prepare your data frame directly from your pooled summary
 plot_df <- summary(pooled_Multinom, exponentiate = TRUE, conf.int = TRUE) %>%
   mutate(
-    # Create clean variable labels
-    variable = case_when(
-      term == "analgesic_use" ~ "Analgesic Use",
-      term == "analgesics_planTypical+ tramadol" ~ "Analgesics Plan (Typical + Tramadol)",
-      grepl("anxiety", term) ~ paste0("Anxiety (", sub(".*\\.", "", term), ")"),
-      grepl("education_level", term) ~ paste0("Education Level (", sub(".*\\.", "", term), ")"),
-      grepl("patients_sleep_quality", term) ~ paste0("Sleep Quality (", sub(".*\\.", "", term), ")"),
-      grepl("Surgery_cat", term) ~ paste0("Surgery Category (", sub(".*\\.", "", term), ")"),
-      TRUE ~ term
+    
+    # Create clean variable labels that include the specific contrast
+    variable = paste0(
+      case_when(
+        term == "analgesic_use" ~ "Analgesic Use",
+        term == "analgesics_planTypical+ tramadol" ~ "Analgesics Plan (Typical + Tramadol)",
+        grepl("anxiety", term) ~ paste0("Anxiety (", sub(".*\\.", "", term), ")"),
+        grepl("education_level", term) ~ paste0("Education Level (", sub(".*\\.", "", term), ")"),
+        grepl("patients_sleep_quality", term) ~ paste0("Sleep Quality (", sub(".*\\.", "", term), ")"),
+        grepl("Surgery_cat", term) ~ paste0("Surgery Category (", sub(".*\\.", "", term), ")"),
+        TRUE ~ term
+      ),
+      " [vs. Accurate:",pooled_Multinom$pooled$y.level , "]" # Explicitly names the contrast!
     ),
-    # Format text columns for the table side of the forest plot
     or_ci = sprintf("%.2f (%.2f – %.2f)", estimate, conf.low, conf.high)
   )
 
