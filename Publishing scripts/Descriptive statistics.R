@@ -82,7 +82,7 @@ length_of_stay, smoking_cat , Estimation_status)|>
       abdomen_pl ~ "Abdomen Pain Level",
       back_pl ~ "Back Pain Level",
       others_pl ~ "Other Pain Level",
-      length_of_stay ~ "Length of Stay (days)",
+      length_of_stay ~ "Length of Stay (hours)",
       smoking_cat ~ "Smoking Status"
     ),     statistic = list(all_continuous() ~ "{mean} ({sd}) ({p25} - {median} - {p75})", all_categorical() ~ "{n} ({p}%)"),
      digits = all_continuous() ~ 1,
