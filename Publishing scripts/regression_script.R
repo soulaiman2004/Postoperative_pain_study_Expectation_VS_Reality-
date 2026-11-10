@@ -1,5 +1,6 @@
 # we will now fit a lasso model 
 library(glmnet)
+library(flextable)
 
 selected_vars_list <- list()
 
