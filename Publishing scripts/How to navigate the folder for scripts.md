@@ -6,7 +6,6 @@ In this folder use these files to get the analysis:
 * Wilcoxon_test script.R
 * accelerated_wilcox_test_script.R (accelerated by future and written with help of gemini to accelerate table formation)
 * regression_script.R
-* cumulative porportional odds model script.R
 
 All the other files are tables, ignore most of them because most of these subgroup analyses is exploratory and I won't consider them in results section, along wilcoxon table scripts.
 thank you for for your time
