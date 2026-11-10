@@ -18,3 +18,6 @@ Further details on the study protocol will be published in peer-reviewed journal
 
 - **Analysis Code & Scripts:** Licensed under the [MIT License](LICENSE).
 - **Datasets & Documentation:** Licensed under [CC BY-NC-SA 4.0](LICENSE-DATA.md).
+
+## DOI
+[![DOI](https://zenodo.org/badge/1369414552.svg)](https://doi.org/10.5281/zenodo.24116069)
