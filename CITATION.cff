@@ -1,0 +1,32 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: 'Postoperative Pain Study: Expectation vs Reality'
+message: >-
+  If you use this dataset, please cite it using the metadata
+  from this file.
+type: dataset
+authors:
+  - given-names: Ali
+    family-names: Alsulaiman
+    email: alialsoulaiman2004@outlook.com
+    affiliation: 'University of Aleppo, Faculty of Medicne, student'
+    orcid: 'https://orcid.org/0009-0001-6231-5791'
+  - given-names: Humam
+    family-names: Alkhalf
+    email: humamalkhalaf@gmail.com
+    orcid: 'https://orcid.org/0009-0007-0137-285X'
+    affiliation: 'University of Aleppo, Faculty of Medicne, student'
+repository-code: >-
+  https://github.com/soulaiman2004/Postoperative_pain_study_Expectation_VS_Reality-
+abstract: >-
+  This is the analysis of Postoperative Pain Study:
+  Expectation vs Reality. All the analysis and codes are
+  there
+keywords:
+  - 'Postoperative '
+  - Pain
+  - Postoperative care
+  - Patient's expectation
+license: MIT
