@@ -11,13 +11,29 @@ authors:
   - given-names: Ali
     family-names: Alsulaiman
     email: alialsoulaiman2004@outlook.com
-    affiliation: 'University of Aleppo, Faculty of Medicne, student'
+    affiliation: 'University of Aleppo, Faculty of Medicine, student'
     orcid: 'https://orcid.org/0009-0001-6231-5791'
   - given-names: Humam
     family-names: Alkhalaf
     email: humamalkhalaf@gmail.com
     orcid: 'https://orcid.org/0009-0007-0137-285X'
-    affiliation: 'University of Aleppo, Faculty of Medicne, student'
+    affiliation: 'University of Aleppo, Faculty of Medicine, student'
+  - given-names: Mohammad 
+    family-names: Kurdi
+    orcid: 'https://orcid.org/0009-0002-9453-6510'
+    Affliation: 'University of Aleppo, Faculty of Medicine, student'
+  - given-names: Mohammad
+    family-names: Alammouri
+    orcid: 'https://orcid.org/0009-0008-8045-2803'
+    affliation: 'University of Aleppo, Faculty of Medicine, student'
+  - given-names: Khalaf
+    family-names: AlHamad
+    orcid: 'https://orcid.org/0009-0005-1143-727X'
+    affliation: 'University of Aleppo, Faculty of Medicine, student'
+  - given-names: Anas
+    family-names: Kurdi
+    orcid: 'https://orcid.org/0009-0000-1190-1574'
+    affliation: 'University of Aleppo'
 repository-code: >-
   https://github.com/soulaiman2004/Postoperative_pain_study_Expectation_VS_Reality-
 abstract: >-
