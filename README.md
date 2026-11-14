@@ -13,3 +13,11 @@ The study took place between late March 2026 and May 2026, Data concerning Demog
 Operative time was measured from first incision to last suture. Pain expectations were measured through NRS score.
 The patients were then re-evaluated during next 24 Hours (0n roughly 6:00 pm the same day for those discharged on same day, 9:00 am for those who were discharged later). During this re-evaluation, Average post-operative pain , max and min postoperative pain along pain on coughing and movement in NRS were taken. Informed consent was taken before enrollment.
 Further details on the study protocol will be published in peer-reviewed journal later on.
+
+## License
+
+- **Analysis Code & Scripts:** Licensed under the [MIT License](LICENSE).
+- **Datasets & Documentation:** Licensed under [CC BY-NC-SA 4.0](LICENSE-DATA.md).
+
+## DOI
+[![DOI](https://zenodo.org/badge/1369414552.svg)](https://doi.org/10.5281/zenodo.24116069)
