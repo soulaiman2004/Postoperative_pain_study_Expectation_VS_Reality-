@@ -11,41 +11,45 @@ authors:
   - given-names: Ali
     family-names: Alsulaiman
     email: alialsoulaiman2004@outlook.com
-    affiliation: 'University of Aleppo, Faculty of Medicine, student'
+    affiliation: 'Faculty of Medicine, University of Aleppo'
     orcid: 'https://orcid.org/0009-0001-6231-5791'
   - given-names: Humam
     family-names: Alkhalaf
     email: humamalkhalaf@gmail.com
+    affiliation: 'Faculty of Medicine, University of Aleppo'
     orcid: 'https://orcid.org/0009-0007-0137-285X'
-    affiliation: 'University of Aleppo, Faculty of Medicine, student'
-  - given-names: Mohammad 
+  - given-names: Mohammad
     family-names: Kurdi
+    affiliation: 'Faculty of Medicine, University of Aleppo'
     orcid: 'https://orcid.org/0009-0002-9453-6510'
-    Affliation: 'University of Aleppo, Faculty of Medicine, student'
   - given-names: Mohammad
     family-names: Alammouri
+    affiliation: 'Faculty of Medicine, University of Aleppo'
     orcid: 'https://orcid.org/0009-0008-8045-2803'
-    affliation: 'University of Aleppo, Faculty of Medicine, student'
   - given-names: Khalaf
     family-names: AlHamad
+    affiliation: 'Faculty of Medicine, University of Aleppo'
     orcid: 'https://orcid.org/0009-0005-1143-727X'
-    affliation: 'University of Aleppo, Faculty of Medicine, student'
   - given-names: Anas
     family-names: Kurdi
+    affiliation: 'University of Aleppo Hospital, University of Aleppo'
     orcid: 'https://orcid.org/0009-0000-1190-1574'
-    affliation: 'University of Aleppo'
-  - given-names: Maher 
-    family-named: Alamine 
+  - given-names: Maher
+    family-names: Alamine
+    affiliation: 'University of Aleppo Hospital, University of Aleppo'
     orcid: 'https://orcid.org/0009-0003-6043-6412'
-    affiliation: 'University of Aleppo'
+  - given-names: Ahmad
+    family-names: Ghazal
+    affiliation: 'Faculty of Medicine, University of Aleppo'
+    orcid: 'https://orcid.org/0000-0002-5032-2839'
 repository-code: >-
   https://github.com/soulaiman2004/Postoperative_pain_study_Expectation_VS_Reality-
 abstract: >-
   This is the analysis of Postoperative Pain Study:
   Expectation vs Reality. All the analysis and codes are
-  there
+  there.
 keywords:
-  - 'Postoperative '
+  - Postoperative
   - Pain
   - Postoperative care
   - Patient's expectation
