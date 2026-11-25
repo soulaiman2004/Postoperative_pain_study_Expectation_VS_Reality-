@@ -25,6 +25,12 @@ Patients were re-evaluated within the first 24 hours postoperatively (at roughly
 - **Mentorship:** Ahmad Ghazal.
 
 
+## Ethical Approval & Data Governance
+This study was reviewed and approved by the Research Ethics Committee at the **University of Aleppo** (Approval No: 2607 , Date: 29/3/2026). 
+
+All patient data used in this repository has been fully de-identified in accordance with institutional guidelines and the Declaration of Helsinki. No personally identifiable information (PII) is stored or processed in these scripts.
+
+
 ## License
 
 - **Analysis Code & Scripts:** Licensed under the [MIT License](LICENSE).
