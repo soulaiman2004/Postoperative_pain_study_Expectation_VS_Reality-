@@ -22,8 +22,8 @@ Patients were re-evaluated within the first 24 hours postoperatively (at roughly
 - **Field researchers collecting preoperative data from patients:** Mohammad Alammouri, Ali Alsulaiman, Humam Alkhalaf, Khalaf Alhamad, Anas Kurdi, Mohammad Kurdi.
 - **Field researchers collecting postoperative data from patients:** Maher Alamine, Anas Kurdi, Khalaf Alhamad.
 - **Surgical time acquisition and Organising field collection:** Shereen Hussein.
--**Data curation:** Mohammad Alammouri, Humam Alkhalaf, Ali Alsulaiman
--**Data analysis:** Ali Alsulaiman, Humam Alkhalaf
+- **Data curation:** Mohammad Alammouri, Humam Alkhalaf, Ali Alsulaiman
+- **Data analysis:** Ali Alsulaiman, Humam Alkhalaf
 - **Mentorship:** Ahmad Ghazal.
 
 
