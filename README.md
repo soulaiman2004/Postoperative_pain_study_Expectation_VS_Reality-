@@ -3,12 +3,11 @@
 This study was performed by students in Aleppo university as their graduation thesis, and these students along their collaborators decided to publish it.
 This repository sole purpose is to analyse cleaned data made by my peers.
 
-## WHAT SHOULD YOU EXPECT IN THIS STUDY
+## WHAT SHOULD YOU EXPECT IN THIS REPOSITORY
 
 The analysis of the thesis I have put in a separate folder called *Thesis script*, The script written there was written by Both **Ali Alsulaiman** and **Humam Alkhalaf**, both collaborators in this study.
 The folder called *Publishing scripts* was written solely by **Ali Alsulaiman**. it has used a different paradigm in separating the analysis to shorter scripts easier to be read by reviewers.
 
-## ABOUT THE STUDY
 ## ABOUT THE STUDY
 The study took place between late March and May 2026. Collected baseline data included demographics, patients' psychological status, sleep quality on the night before surgery, height (measured by two researchers), weight (also measured), and full medical history.
 
