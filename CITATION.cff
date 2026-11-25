@@ -40,7 +40,7 @@ authors:
     orcid: 'https://orcid.org/0009-0003-6043-6412'
   - given-names: Shereen
     family-names: Hussein
-    afliation: 'University of Aleppo Hospital, University of Aleppo
+    affiliation: 'University of Aleppo Hospital, University of Aleppo'
     orcid: 'https://orcid.org/0009-0000-5667-3472'
   - given-names: Ahmad
     family-names: Ghazal
@@ -58,3 +58,4 @@ keywords:
   - Postoperative care
   - Patient's expectation
 license: MIT
+notes: "Ethical approval was granted by University of Aleppo Biomedical Research Ethics Committee, application no.2607, issued on 29/3/2026."

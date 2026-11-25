@@ -17,11 +17,13 @@ Operative time was measured from the first incision to the last suture. Preopera
 Patients were re-evaluated within the first 24 hours postoperatively (at roughly 6:00 PM on the day of surgery for same-day discharges, and at 9:00 AM the next day for those discharged later). During this follow-up, average, maximum, and minimum postoperative pain—as well as pain upon coughing and movement were recorded using the NRS. Informed consent was obtained from all participants prior to enrollment.
 
 ## AUTHORS EXACT ROLES IN PREPARATION OF THIS REPOSITORY
-- **Concept of the study:** Mohammad Alamouri.
+- **Concept of the study:** Mohammad Alammouri.
 - **Further contributors to study design:** Ali Alsulaiman, Humam Alkhalaf, Ahmad Ghazal.
-- **Field researchers collecting preoperative data from patients:** Mohammad Alamouri, Ali Alsulaiman, Humam Alkhalaf, Khalaf Alhamad, Anas Kurdi, Mohammad Kurdi.
+- **Field researchers collecting preoperative data from patients:** Mohammad Alammouri, Ali Alsulaiman, Humam Alkhalaf, Khalaf Alhamad, Anas Kurdi, Mohammad Kurdi.
 - **Field researchers collecting postoperative data from patients:** Maher Alamine, Anas Kurdi, Khalaf Alhamad.
 - **Surgical time acquisition and Organising field collection:** Shereen Hussein.
+-**Data curation:** Mohammad Alammouri, Humam Alkhalaf, Ali Alsulaiman
+-**Data analysis:** Ali Alsulaiman, Humam Alkhalaf
 - **Mentorship:** Ahmad Ghazal.
 
 
